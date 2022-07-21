@@ -1,6 +1,5 @@
 //global variables
 var newPassword = true;
-var password;
 
 var generatePassword = function() {
   //while loop for if they want a new password
@@ -11,7 +10,7 @@ var generatePassword = function() {
     // length of the resulted password
     var passlength;
     // if there is a value in password
-    var passwordV = false;
+    var passwordV = true;
 
     // booleans declaring if user uses upper chars, lower chars, special chars, or numbers
     var useUpper =  false;
@@ -36,7 +35,6 @@ var generatePassword = function() {
         var j = Math.floor(Math.random() * (i + 1));
         [password[i], password[j]] = [password[j], password[i]];
       }
-      console.log(password);
     }
 
     //conditionals function
@@ -100,15 +98,12 @@ var generatePassword = function() {
         passwordV = true;
       }
 
-      console.log(password);
       //calls the shuffleArray function
       shuffleArray(password);
       //shortens the shuffled function to desired length
-      password.length = passlength
-      console.log(password)
+      password.length = passlength;
 
-      password = password.join("")
-      console.log(password)
+      password = password.join("");
     }
 
   //        user input if they want a new password
@@ -117,21 +112,22 @@ var generatePassword = function() {
     newPassword = window.confirm("Your current password is: \n" + password + "\nWould you like a different one?");
   }
   else{
-    window.alert("Bruh. You didnt enter a valid password or follow requirements. Try again")
     newPassword = false;
+    window.alert("Bruh. You didnt enter a valid password or follow requirements. Try again")
   }
   }
-  return password;
+  console.log(password)
 }
 
-function passwords() {
-  var passwordss = generatePassword();
+var generateBtn = document.querySelector('#generate');
+
+function writepasswords() {
+  var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   generatePassword();
-  passwordText.value = passwordss;
+  passwordText.value = password;
 }
 
 // Add event listener to generate button
-var generateBtn = document.querySelector('#generate');
-generateBtn.addEventListener("click", passwords());
+generateBtn.addEventListener("click", writepasswords);
