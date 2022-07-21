@@ -1,4 +1,4 @@
-# <Password-Generator>
+# Password-Generator
   
   ## This program generates a password using java script iterations and more
   
